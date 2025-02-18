@@ -1,3 +1,4 @@
+
 from matplotlib.colors import ListedColormap
 import numpy as np
 import matplotlib.pyplot as plt
@@ -7,7 +8,9 @@ import pandas as pd
 from sklearn.datasets import make_classification
 from sklearn.metrics import roc_auc_score
 
-def plot_decision_boundary(classifier, X_train, X_test, y_train, y_test):
+
+
+def Plot_decision_boundary(classifier, X_train, X_test, y_train, y_test):
     '''
     To use:
     rf = RandomForestClassifier()
@@ -45,7 +48,7 @@ def plot_decision_boundary(classifier, X_train, X_test, y_train, y_test):
         sns.scatterplot(x=xi, y=yi, c=colors[i], label=j)
 
 
-def make_data(sep):
+def Make_data(sep):
     '''
     To use:
     Ex: make_data(sep=2)
@@ -59,7 +62,7 @@ def make_data(sep):
     return X, y
 
 
-def runClassifier(classifier, X_train, X_test, y_train, y_test):
+def RunClassifier(classifier, X_train, X_test, y_train, y_test):
     '''
     Ex:
 
@@ -79,4 +82,21 @@ def runClassifier(classifier, X_train, X_test, y_train, y_test):
     print('Test set roc-auc: {}'.format(roc_auc_score(y_test, test_prob)))
 
 
+def Scatterplot(data1, class1, data2, class2):
+    '''
+    Plot 2 Scatterplots.
+    1 Row and 2 columns, given the 2 provided datasets
+    Ex:
+
+    >>>Scatterplot(X, y, X_resampled, y_resampled)
+
+
+    '''
+    
+    plt.figure(figsize=(12,6))
+    plt.subplot(121)
+    sns.scatterplot(data=data1, x=data1.columns[0], y=data1.columns[1], hue=class1)
+
+    plt.subplot(122)
+    sns.scatterplot(data=data2, x=data2.columns[0], y=data2.columns[1], hue=class2)
 

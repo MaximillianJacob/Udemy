@@ -1,3 +1,8 @@
+from matplotlib.colors import ListedColormap
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 def plot_decision_boundary(classifier, X_train, X_test, y_train, y_test):
     X_set, y_set = X_train.values, y_train
 

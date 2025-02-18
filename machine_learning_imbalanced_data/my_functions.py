@@ -2,8 +2,17 @@ from matplotlib.colors import ListedColormap
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import pandas as pd
+
+from sklearn.datasets import make_classification
 
 def plot_decision_boundary(classifier, X_train, X_test, y_train, y_test):
+    '''
+    To use:
+    rf = RandomForestClassifier()
+    Ex: plot_decision_boundary(rf, X_train, X_test, y_train, y_test)
+    
+    '''
     X_set, y_set = X_train.values, y_train
 
     colors=('red', 'green')
@@ -34,4 +43,17 @@ def plot_decision_boundary(classifier, X_train, X_test, y_train, y_test):
 
         sns.scatterplot(x=xi, y=yi, c=colors[i], label=j)
 
+
+def make_data(sep):
+    '''
+    To use:
+    Ex: make_data(sep=2)
+    
+    '''
+    X, y = make_classification(n_samples=1000, n_features=2, n_redundant=0, n_clusters_per_class=1, weights=[0.99], class_sep=sep, random_state=0)
+
+    X = pd.DataFrame(data=X, columns=['varA', 'varB'])
+    y = pd.Series(y)
+
+    return X, y
 

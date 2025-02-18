@@ -5,6 +5,7 @@ import seaborn as sns
 import pandas as pd
 
 from sklearn.datasets import make_classification
+from sklearn.metrics import roc_auc_score
 
 def plot_decision_boundary(classifier, X_train, X_test, y_train, y_test):
     '''
@@ -56,4 +57,26 @@ def make_data(sep):
     y = pd.Series(y)
 
     return X, y
+
+
+def runClassifier(classifier, X_train, X_test, y_train, y_test):
+    '''
+    Ex:
+
+    rf = RandomForestClassifier()
+
+    runRandomForests(rf, X_train, X_test, y_train, y_test)
+    '''
+
+    classifier.fit(X_train, y_train)
+
+    print('Train Set')
+    train_prob = classifier.predict_proba(X_train)[:,1]
+    print('Train set roc-auc: {}'.format(roc_auc_score(y_train, train_prob)))
+
+    print('Test set')
+    test_prob = classifier.predict_proba(X_test)[:,1]
+    print('Test set roc-auc: {}'.format(roc_auc_score(y_test, test_prob)))
+
+
 

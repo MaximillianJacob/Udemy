@@ -13,8 +13,10 @@ from sklearn.metrics import roc_auc_score
 def PlotDecisionBoundary(classifier, X_train, X_test, y_train, y_test):
     '''
     To use:
+    
+    Ex: 
     rf = RandomForestClassifier()
-    Ex: PlotDecisionBoundary(rf, X_train, X_test, y_train, y_test)
+    >>>PlotDecisionBoundary(rf, X_train, X_test, y_train, y_test)
     
     '''
     X_set, y_set = X_train.values, y_train
@@ -50,8 +52,10 @@ def PlotDecisionBoundary(classifier, X_train, X_test, y_train, y_test):
 
 def MakeData(n_classes, weights, sep):
     '''
-    To use:
-    Ex: MakeData(n_classes=2, weights=[0.90], sep=2)
+    
+    Ex: 
+    
+    >>>MakeData(n_classes=2, weights=[0.90], sep=2)
     
     '''
     X, y = make_classification(n_samples=1000, n_features=2, n_redundant=0, n_classes=n_classes, n_clusters_per_class=1, weights=weights, class_sep=sep, random_state=0)
@@ -68,18 +72,21 @@ def RunClassifier(classifier, X_train, X_test, y_train, y_test):
 
     rf = RandomForestClassifier()
 
-    RunClassifier(rf, X_train, X_test, y_train, y_test)
+    >>>RunClassifier(rf, X_train, X_test, y_train, y_test)
     '''
 
     classifier.fit(X_train, y_train)
 
+    classifier_name = type(classifier).__name__
+
     print('Train Set')
     train_prob = classifier.predict_proba(X_train)[:,1]
-    print('Train set roc-auc: {}'.format(roc_auc_score(y_train, train_prob)))
+    print(classifier_name,"'s Train set roc-auc: {}".format(roc_auc_score(y_train, train_prob)))
 
     print('Test set')
     test_prob = classifier.predict_proba(X_test)[:,1]
-    print('Test set roc-auc: {}'.format(roc_auc_score(y_test, test_prob)))
+    print(f"{classifier_name}'s Test set roc-auc score: {roc_auc_score(y_test, test_prob)}")
+
 
 
 def Scatterplot(data1, class1, data2, class2):

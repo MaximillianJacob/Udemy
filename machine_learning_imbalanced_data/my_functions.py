@@ -10,11 +10,11 @@ from sklearn.metrics import roc_auc_score
 
 
 
-def Plot_decision_boundary(classifier, X_train, X_test, y_train, y_test):
+def PlotDecisionBoundary(classifier, X_train, X_test, y_train, y_test):
     '''
     To use:
     rf = RandomForestClassifier()
-    Ex: plot_decision_boundary(rf, X_train, X_test, y_train, y_test)
+    Ex: PlotDecisionBoundary(rf, X_train, X_test, y_train, y_test)
     
     '''
     X_set, y_set = X_train.values, y_train
@@ -48,13 +48,13 @@ def Plot_decision_boundary(classifier, X_train, X_test, y_train, y_test):
         sns.scatterplot(x=xi, y=yi, c=colors[i], label=j)
 
 
-def Make_data(sep):
+def MakeData(n_classes, weights, sep):
     '''
     To use:
-    Ex: make_data(sep=2)
+    Ex: MakeData(n_classes=2, weights=[0.90], sep=2)
     
     '''
-    X, y = make_classification(n_samples=1000, n_features=2, n_redundant=0, n_clusters_per_class=1, weights=[0.99], class_sep=sep, random_state=0)
+    X, y = make_classification(n_samples=1000, n_features=2, n_redundant=0, n_classes=n_classes, n_clusters_per_class=1, weights=weights, class_sep=sep, random_state=0)
 
     X = pd.DataFrame(data=X, columns=['varA', 'varB'])
     y = pd.Series(y)

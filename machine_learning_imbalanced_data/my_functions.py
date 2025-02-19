@@ -68,7 +68,7 @@ def RunClassifier(classifier, X_train, X_test, y_train, y_test):
 
     rf = RandomForestClassifier()
 
-    runRandomForests(rf, X_train, X_test, y_train, y_test)
+    RunClassifier(rf, X_train, X_test, y_train, y_test)
     '''
 
     classifier.fit(X_train, y_train)

@@ -89,21 +89,24 @@ def RunClassifier(classifier, X_train, X_test, y_train, y_test):
 
 
 
-def Scatterplot(data1, class1, data2, class2):
+def Scatterplot(data1, class1, data2, class2, alpha=None):
     '''
     Plot 2 Scatterplots.
     1 Row and 2 columns, given the 2 provided datasets
     Ex:
 
+    Without alpha:
     >>>Scatterplot(X, y, X_resampled, y_resampled)
 
+    With alpha:
+    >>>Scatterplot(X, y, X_resampled, y_resampled, alpha=0.5)
 
     '''
     
     plt.figure(figsize=(12,6))
     plt.subplot(121)
-    sns.scatterplot(data=data1, x=data1.columns[0], y=data1.columns[1], hue=class1)
+    sns.scatterplot(data=data1, x=data1.columns[0], y=data1.columns[1], alpha=alpha, hue=class1)
 
     plt.subplot(122)
-    sns.scatterplot(data=data2, x=data2.columns[0], y=data2.columns[1], hue=class2)
+    sns.scatterplot(data=data2, x=data2.columns[0], y=data2.columns[1], alpha=alpha,hue=class2)
 

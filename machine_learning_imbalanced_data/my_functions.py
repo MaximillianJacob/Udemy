@@ -50,12 +50,12 @@ def PlotDecisionBoundary(classifier, X_train, X_test, y_train, y_test):
         sns.scatterplot(x=xi, y=yi, c=colors[i], label=j)
 
 
-def MakeData(n_classes, weights, sep):
+def MakeData(n_classes=2, weights=[0.99], sep=1):
     '''
     
     Ex: 
     
-    >>>MakeData(n_classes=2, weights=[0.90], sep=2)
+    >>>X,y = MakeData(n_classes=2, weights=[0.90], sep=1)
     
     '''
     X, y = make_classification(n_samples=1000, n_features=2, n_redundant=0, n_classes=n_classes, n_clusters_per_class=1, weights=weights, class_sep=sep, random_state=0)

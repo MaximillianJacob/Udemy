@@ -73,6 +73,7 @@ def parse_email(file_path):
 if __name__ == "__main__":
     print("Running email_parser.py as a standalone script...")
     print("Max rules")
+    print("Agent Max testing")
     import sys
     if len(sys.argv) != 2:
         print("Usage: python email_parser.py <email_file>")

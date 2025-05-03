@@ -71,6 +71,8 @@ def parse_email(file_path):
         print("Body:", msg.get_payload(decode=True).decode())
         print("HTML Body:", msg.get_payload(decode=True).decode())
 if __name__ == "__main__":
+    print("Running email_parser.py as a standalone script...")
+    print("Max rules")
     import sys
     if len(sys.argv) != 2:
         print("Usage: python email_parser.py <email_file>")
